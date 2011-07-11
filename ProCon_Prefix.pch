@@ -1,0 +1,14 @@
+//
+// Prefix header for all source files of the 'ProCon' target in the 'ProCon' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
+
+// This is defined in Math.h
+#define M_PI   3.14159265358979323846264338327950288   /* pi */
+
+// Our conversion definition
+#define DEGREES_TO_RADIANS(angle) ((angle / 180.0) * M_PI)
