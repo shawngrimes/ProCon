@@ -11,8 +11,7 @@
 #import "V8HorizontalPickerView.h"
 #import "ProjectClass.h"
 #import "ArgumentClass.h"
-
-@class AppDelegate_iPhone;
+#import "AppDelegate_iPhone.h"
 
 @interface ItemView : UIViewController <UITextFieldDelegate, V8HorizontalPickerViewDelegate, V8HorizontalPickerViewDataSource,UIPickerViewDataSource, UIPickerViewDelegate> {
 	UITextField *argumentTitleTF;

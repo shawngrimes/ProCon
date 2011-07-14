@@ -84,8 +84,6 @@
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"projectName" ascending:NO];
 	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
 	[fetchRequest setSortDescriptors:sortDescriptors];
-	[sortDescriptors release];
-	[sortDescriptor release];
 	
 	NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] 
 									   initWithFetchRequest:fetchRequest 
@@ -96,7 +94,6 @@
 	[frc performFetch:nil];
 //	NSLog(@"Fetched %i objects", [[frc fetchedObjects]count]);
 	_FRC=frc;
-	[fetchRequest release];
 	return _FRC;
 	
 	
@@ -132,7 +129,6 @@
 	ProjectView *projectVC = [[ProjectView alloc] init];
 	projectVC.selectedProject=newProject;
 	[self.navigationController pushViewController:projectVC animated:YES];
-	[projectVC release];
 }
 
 -(IBAction) editButtonTouch:(id) sender{
@@ -184,7 +180,7 @@
     // Dequeue or create a new cell.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 	
 	cell.textLabel.text=[[[self.FRC fetchedObjects] objectAtIndex:indexPath.row] valueForKey:@"projectName"];
@@ -216,7 +212,7 @@
         rowBackground = [UIImage imageNamed:@"cellMiddle.png"];
     }	
 
-    cell.backgroundView = [[[UIImageView alloc] initWithImage:rowBackground] autorelease];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:rowBackground];
 
 	return cell;
 	
@@ -256,7 +252,6 @@
 
 	projectVC.selectedProject=selectedProject;
 	[self.navigationController pushViewController:projectVC animated:YES];
-	[projectVC release];
 	
 }
 
@@ -284,18 +279,6 @@
 }
 
 
-- (void)dealloc {
-	
-    self.projectsTableView = nil;
-    self.addButton = nil;
-    self.editButton = nil;
-    self.MOC = nil;
-    self.FRC = nil;
-    self.projectsArray = nil;
-	
-    self.versionLabel = nil;
-    [super dealloc];
-}
 
 
 @end

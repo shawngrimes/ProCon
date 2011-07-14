@@ -37,7 +37,7 @@
 	
 	self.argumentTitleTF.text=self.selectedArgument.argDescription;
     
-    self.scoreV8Picker=[[[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(18, 300, 280, 44)] autorelease];
+    self.scoreV8Picker=[[V8HorizontalPickerView alloc] initWithFrame:CGRectMake(18, 300, 280, 44)];
     _scoreV8Picker.backgroundColor=[UIColor clearColor];
     _scoreV8Picker.selectedTextColor=[UIColor whiteColor];
     _scoreV8Picker.textColor   = [UIColor blackColor];
@@ -242,19 +242,6 @@
 }
 
 
-- (void)dealloc {
-    
-    self.scoreHeadingImageView = nil;
-    self.thumbImageView = nil;
-	[argumentTitleTF release];
-	[proConSegment release];
-	[scorePicker release];
-	[saveButton release];
-    [_scoreV8Picker release];
-	[selectedArgument release];
-	
-    [super dealloc];
-}
 
 
 @end

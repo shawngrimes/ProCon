@@ -13,8 +13,8 @@
 #import "ItemView.h"
 #import "SummaryView.h"
 
-@class AppDelegate_iPhone;
-@class FlurryAPI;
+#import "AppDelegate_iPhone.h"
+#import "FlurryAPI.h"
 
 @interface ProjectView : UIViewController <UITextFieldDelegate> {
 

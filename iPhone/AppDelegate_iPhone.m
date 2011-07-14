@@ -40,7 +40,6 @@ static SystemSoundID soundFileObjectClick;
     [FlurryAPI logAllPageViews:navigationController];
     
 	[window	 addSubview:navigationController.view];
-	[mainVC release];
 	
 	
     // Override point for customization after application launch.
@@ -102,10 +101,6 @@ static SystemSoundID soundFileObjectClick;
 }
 
 
-- (void)dealloc {
-	
-	[super dealloc];
-}
 
 
 @end

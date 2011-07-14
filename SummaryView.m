@@ -183,7 +183,7 @@
 			break;
 	}
 
-    return [[[UIImageView alloc] initWithImage:headerImage] autorelease];
+    return [[UIImageView alloc] initWithImage:headerImage];
     
     
 }
@@ -219,11 +219,12 @@
     // Dequeue or create a new cell.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
 	
 	switch (indexPath.section) {
 		case 0:
+        {
 			cell.textLabel.text=[[proArguments objectAtIndex:indexPath.row] valueForKey:@"argDescription"];
 			cell.detailTextLabel.text=[[[proArguments objectAtIndex:indexPath.row] valueForKey:@"score"] stringValue];
             cell.backgroundColor=[UIColor clearColor];
@@ -247,16 +248,18 @@
                 rowBackground = [UIImage imageNamed:@"cellMiddlePro.png"];
             }	
             
-            cell.backgroundView = [[[UIImageView alloc] initWithImage:rowBackground] autorelease];
+            cell.backgroundView = [[UIImageView alloc] initWithImage:rowBackground];
 
 			break;
+        }
 		case 1:
+        {
 			cell.textLabel.text=[[conArguments objectAtIndex:indexPath.row] valueForKey:@"argDescription"];
 			cell.detailTextLabel.text=[[[conArguments objectAtIndex:indexPath.row] valueForKey:@"score"] stringValue];
             cell.backgroundColor=[UIColor clearColor];
             NSInteger conSectionRows = [_argumentsTableView numberOfRowsInSection:[indexPath section]];
             NSInteger conRow = [indexPath row];
-            UIImage *conRowBackground;
+            UIImage *rowBackground;
             
             if (conRow == 0 && conRow == conSectionRows - 1){
                 rowBackground = [UIImage imageNamed:@"cellTopandBottomCon.png"];
@@ -274,9 +277,10 @@
                 rowBackground = [UIImage imageNamed:@"cellMiddleCon.png"];
             }	
             
-            cell.backgroundView = [[[UIImageView alloc] initWithImage:rowBackground] autorelease];
+            cell.backgroundView = [[UIImageView alloc] initWithImage:rowBackground];
 
 			break;
+        }
 		default:
 			[NSException exceptionWithName:@"Load Cell Error" reason:@"Unknown section" userInfo:nil];
 			break;
@@ -348,7 +352,6 @@
 	
 	argumentVC.selectedArgument=argumentSelected;
 	[self.navigationController pushViewController:argumentVC animated:YES];
-	[argumentVC release];
 	
 }
 
@@ -394,17 +397,6 @@
 }
 
 
-- (void)dealloc {
-    self.scoreBannerImageView = nil;
-    self.MOC=nil;    
-    self.decisionScrollView = nil;
-    self.argumentsTableView = nil;
-    self.scoreLabel = nil;
-    [thumbImageView release];
-	[proArguments release];
-	[conArguments release];
-    [super dealloc];
-}
 
 
 @end

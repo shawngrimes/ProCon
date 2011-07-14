@@ -96,7 +96,6 @@
 	itemVC.selectedArgument=newArgument;
 	itemVC.proConSegment.selectedSegmentIndex=0;
 	[self.navigationController pushViewController:itemVC animated:YES];
-	[itemVC release];
 	
 }
 -(IBAction) addCon:(id)sender{
@@ -112,7 +111,6 @@
 	itemVC.selectedArgument=newArgument;
 	itemVC.proConSegment.selectedSegmentIndex=1;
 	[self.navigationController pushViewController:itemVC animated:YES];
-	[itemVC release];
 }
 -(IBAction) reviewDecision:(id)sender{
     [AppDelegate_iPhone clickSoundEffect];
@@ -121,7 +119,6 @@
 	summaryVC.selectedProject = self.selectedProject;
 	
 	[self.navigationController pushViewController:summaryVC animated:YES];
-	[summaryVC release];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -161,16 +158,6 @@
 }
 
 
-- (void)dealloc {
-	[addProButton release];
-	[addConButton release];
-	[reviewDecisionButton release];
-	[projectNameTextField release];
-	
-	
-	[selectedProject release];
-    [super dealloc];
-}
 
 
 @end

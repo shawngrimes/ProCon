@@ -20,8 +20,8 @@ typedef enum {
 
 	// delegate and datasources to feed scroll view. this view only maintains
 	//     a weak reference to these.
-	id <V8HorizontalPickerViewDataSource> dataSource;
-	id <V8HorizontalPickerViewDelegate> delegate;
+	id <V8HorizontalPickerViewDataSource> __unsafe_unretained dataSource;
+	id <V8HorizontalPickerViewDelegate> __unsafe_unretained delegate;
 
 	// collection of widths of each element.
 	NSMutableArray *elementWidths;
